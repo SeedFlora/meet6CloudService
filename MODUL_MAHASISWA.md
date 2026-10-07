@@ -28,6 +28,10 @@ cp .env.example .env
 docker compose config --quiet
 ```
 
+![File lokal tersedia, konfigurasi Compose valid, dan secret diabaikan Git](screenshots/lab06_persiapan_config.png)
+
+*Perintah: `Test-Path .env`, `Test-Path secrets/db_password.txt`, `docker compose config --quiet`, dan `git check-ignore -v .env secrets/db_password.txt`. Fungsi: membuktikan file lokal ada, Compose dapat membaca YAML, dan Git mengabaikan kredensial. Cara kerja: `config --quiet` menguji konfigurasi tanpa mencetak password; `check-ignore` menunjukkan aturan pengecualian. Baca hasil: dua `True`, exit 0, serta dua aturan `.gitignore`. Ini render output command aktual tanpa menampilkan isi password.*
+
 Jika file lokal sudah ada dari percobaan sebelumnya, jangan menimpa data tanpa memeriksanya. Password contoh hanya untuk laptop latihan; ganti sebelum dipakai di lingkungan lain. Jangan taruh password di laporan atau screenshot.
 
 ## Praktik 1 — Menyalakan dan mengamati stack
@@ -38,6 +42,10 @@ docker compose ps
 docker compose logs --tail=30 api db cache
 docker compose exec api getent hosts db cache
 ```
+
+![DNS antar-container, log, dan respons health Lab 06](screenshots/lab06_dns_log_health.png)
+
+*Perintah: `docker compose exec -T api getent hosts db cache`, `docker compose logs --tail=4 api db cache`, dan `curl.exe -s -i http://127.0.0.1:8000/health`. Fungsi: memeriksa hostname internal, jejak proses, serta respons HTTP. Cara kerja: DNS Compose memberi alamat `db`/`cache` di network internal; API memeriksa kedua dependency pada `/health`. Baca hasil: dua alamat, log service, HTTP 200 dan JSON `status=ok`. Ini render output command aktual; IP container bisa berubah.*
 
 Untuk mengamati log saat permintaan HTTP masuk, jalankan `docker compose logs -f api` di terminal kedua, lalu hentikan mode ikuti log dengan **Ctrl+C**. Ini hanya menghentikan tampilan log, bukan container.
 
@@ -161,6 +169,12 @@ git diff --cached --check
 git commit -m "lab06: Compose, cache, dan persistensi"
 git push
 ```
+
+![Repo template Lab 06 terbit dan commit lokal cocok dengan GitHub](screenshots/lab06_git_terbit.png)
+
+*SHA pada gambar adalah snapshot saat uji. Setelah modul diperbarui, jalankan ulang perintah untuk memeriksa commit terbaru.*
+
+*Perintah: `git remote -v`, `git status --short`, `git log -1 --oneline`, `git rev-parse HEAD`, dan `git ls-remote origin refs/heads/main`. Fungsi: memeriksa tujuan serta hasil push modul dan kode. Cara kerja: cocokkan SHA lokal dengan branch `main` remote. Baca hasil: `Sama: True` pada repo pengajar; mahasiswa mengulangi pada repo pribadi setelah commit/push. Ini render output command aktual.*
 
 Jika folder bukti belum dibuat, hilangkan argumen tersebut. Sebelum commit, pastikan `.env` dan `secrets/db_password.txt` **tidak** staged; contoh `.env.example` dan `db_password.txt.example` boleh staged. Jika push pertama belum punya upstream, gunakan `git push -u origin main`.
 

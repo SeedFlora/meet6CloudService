@@ -91,6 +91,20 @@ docker compose ps
 
 ## Screenshot dan penjelasan command pada tiap gambar
 
+![Persiapan dan validasi konfigurasi tanpa membuka password](screenshots/lab06_persiapan_config.png)
+
+**Perintah:** `Test-Path .env`, `Test-Path secrets/db_password.txt`, `docker compose config --quiet`, `git check-ignore -v .env secrets/db_password.txt`. **Fungsi:** cek file lokal, bentuk Compose, dan perlindungan Git. **Cara kerja:** Compose membaca konfigurasi tanpa mencetaknya; Git melaporkan aturan ignore. **Baca:** dua `True`, exit 0, dua aturan ignore. Ini render output command aktual.
+
+![DNS Compose, log, dan HTTP health](screenshots/lab06_dns_log_health.png)
+
+**Perintah:** `docker compose exec -T api getent hosts db cache`, `docker compose logs --tail=4 api db cache`, `curl.exe -s -i http://127.0.0.1:8000/health`. **Fungsi:** bukti service name, jejak startup/request, dan health. **Cara kerja:** DNS internal menerjemahkan `db`/`cache`; API memberi 200 jika dependency hidup. **Baca:** dua alamat internal, log tiga service, HTTP 200 dan JSON sehat. IP dapat berubah. Ini render output command aktual.
+
+![Repo template Lab 06 telah terbit](screenshots/lab06_git_terbit.png)
+
+*SHA pada gambar adalah snapshot saat uji. Setelah modul diperbarui, jalankan ulang perintah untuk memeriksa commit terbaru.*
+
+**Perintah:** `git remote -v`, `git status --short`, `git log -1`, `git rev-parse HEAD`, `git ls-remote origin refs/heads/main`. **Fungsi:** memeriksa repo tujuan dan hasil publikasi. **Cara kerja:** SHA lokal dan remote dibandingkan. **Baca:** `Sama: True` pada repo template dosen; mahasiswa mengulanginya pada repo pribadi. Ini render output command aktual.
+
 ![Docker Desktop dengan tiga container Lab 06 aktif](screenshots/00_docker_desktop.jpg)
 
 **Perintah:** `docker compose up --build -d --wait`, `docker compose ps`, lalu buka Docker Desktop > Containers. **Fungsi:** memadankan kondisi CLI dengan UI. **Cara kerja:** Compose menjalankan `api`, `db`, `cache` pada network internal; API saja meneruskan port host 8000. **Baca:** tiga titik hijau berarti container berjalan; terminal harus menulis healthy untuk healthcheck. DB/cache tidak punya mapping port host.
