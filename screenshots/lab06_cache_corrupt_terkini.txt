@@ -1,0 +1,4 @@
+redis-cli SET notes:list {broken -> OK
+GET /notes -> HTTP 200, X-Cache: MISS, id 1 ada
+GET /notes ulang -> HTTP 200, X-Cache: HIT
+/health -> HTTP 200

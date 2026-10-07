@@ -81,4 +81,3 @@ Perintah ini juga menghentikan Adminer bila profile `debug` sempat diaktifkan. T
 **Git opsional:** commit `compose.yaml`, source, `.env.example`, dan file secret contoh. Pastikan `git status` tidak menampilkan `.env` atau `secrets/db_password.txt` sebelum push.
 
 Rujukan: [Compose startup order](https://docs.docker.com/compose/how-tos/startup-order/), [Compose profiles](https://docs.docker.com/compose/how-tos/profiles/), [Compose secrets](https://docs.docker.com/compose/how-tos/use-secrets/).
-

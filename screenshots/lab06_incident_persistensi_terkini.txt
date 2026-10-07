@@ -1,0 +1,18 @@
+docker compose stop cache
+GET /health -> HTTP 503 4.07 s
+GET /notes -> HTTP 200 X-Cache MISS 4.0 s; id 1 tetap ada
+
+docker compose restart api -> exit 0
+restart api: HTTP 200, note id=1 tetap ada
+docker compose --profile debug down -> exit 0
+docker compose up -d --wait -> exit 0
+down/up tanpa -v: HTTP 200, note id=1 tetap ada
+docker compose exec -T db psql -U clouduser -d cloudnotes -tAc SELECT count(*) FROM notes; -> exit 0
+PostgreSQL SELECT count(*) FROM notes -> 3
+docker compose ps -> exit 0
+akhir: api/db/cache healthy
+
+NAME                        IMAGE                   COMMAND                  SERVICE   CREATED          STATUS                    PORTS
+cloud-notes-lab06-api-1     cloud-notes-lab06-api   "uvicorn app.main:ap…"   api       20 seconds ago   Up 13 seconds (healthy)   127.0.0.1:8000->8000/tcp
+cloud-notes-lab06-cache-1   redis:7-alpine          "docker-entrypoint.s…"   cache     21 seconds ago   Up 19 seconds (healthy)   6379/tcp
+cloud-notes-lab06-db-1      postgres:16-alpine      "docker-entrypoint.s…"   db        21 seconds ago   Up 19 seconds (healthy)   5432/tcp

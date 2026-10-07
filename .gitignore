@@ -1,0 +1,5 @@
+.env*
+!.env.example
+secrets/*.txt
+__pycache__/
+*.pyc

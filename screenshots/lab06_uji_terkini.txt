@@ -1,0 +1,12 @@
+NAME                        IMAGE                   COMMAND                  SERVICE   CREATED              STATUS                        PORTS
+cloud-notes-lab06-api-1     cloud-notes-lab06-api   "uvicorn app.main:ap…"   api       About a minute ago   Up About a minute (healthy)   127.0.0.1:8000->8000/tcp
+cloud-notes-lab06-cache-1   redis:7-alpine          "docker-entrypoint.s…"   cache     About a minute ago   Up About a minute (healthy)   6379/tcp
+cloud-notes-lab06-db-1      postgres:16-alpine      "docker-entrypoint.s…"   db        About a minute ago   Up About a minute (healthy)   5432/tcp
+
+Lab 06 - Compose/API aktual
+docker compose up --build -d --wait -> 3 service healthy
+GET /health -> HTTP 200, database=postgres, cache=redis
+POST /notes -> HTTP 201, id=1, title=Audit kelas Lab06
+GET /notes pertama -> HTTP 200, X-Cache: MISS
+GET /notes kedua -> HTTP 200, X-Cache: HIT
+POST title="   " -> HTTP 422

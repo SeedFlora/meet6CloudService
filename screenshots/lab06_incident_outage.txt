@@ -1,0 +1,3 @@
+docker compose stop cache
+GET /health -> HTTP 503 4.07 s
+GET /notes -> HTTP 200 X-Cache MISS 4.0 s; id 1 tetap ada
