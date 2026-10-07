@@ -1,6 +1,18 @@
 # Lab 06 — Docker Compose: API + PostgreSQL + Redis
 
-Repo template: [SeedFlora/meet6CloudService](https://github.com/SeedFlora/meet6CloudService). [Modul mahasiswa](MODUL_MAHASISWA.md) memuat screenshot, kunci gangguan Redis, dan jawaban analisis; [panduan dosen](PANDUAN_DOSEN.md) memberi alur demo 90 menit; [panduan Git](PANDUAN_GIT.md) dipakai dari root repo pribadi. Versi cetak: [PDF mahasiswa](MODUL_MAHASISWA.pdf) dan [PDF dosen](PANDUAN_DOSEN.pdf). Slide kelas ada di `slides/`.
+<!-- lecture-materials:start -->
+
+## Materi teori sebelum praktikum
+
+- [Pertemuan 06: Docker Compose](slides/Teori_Pertemuan_06.pptx)
+
+Slide menghubungkan konsep, kasus kerja, bacaan/video resmi, dan langkah lab.
+
+<!-- lecture-materials:end -->
+
+**Kebijakan kelas:** Lab ini latihan formatif, tanpa tugas, nilai, atau penyerahan terpisah. Satu proyek besar dikerjakan oleh kelompok **3 orang**, dengan presentasi checkpoint minggu 7 (UTS) dan hasil akhir minggu 14 (UAS). Simpan hasil lab hanya bila berguna sebagai referensi atau bukti proses proyek. Baca [brief proyek kelompok](PROYEK_KELOMPOK.md). Bobot resmi tetap mengikuti RPS/LMS.
+
+Repo template: [SeedFlora/meet6CloudService](https://github.com/SeedFlora/meet6CloudService). [Modul mahasiswa](MODUL_MAHASISWA.md) memuat screenshot, kunci gangguan Redis, dan jawaban analisis; [panduan Git](PANDUAN_GIT.md) dipakai dari root repo pribadi. Versi cetak: [PDF mahasiswa](MODUL_MAHASISWA.pdf). Slide kelas ada di `slides/`.
 
 **Capaian:** menjalankan tiga service pada network Compose, memakai nama service sebagai hostname, menunggu healthcheck, menyimpan data di volume, membaca secret dari file, dan memakai profile debug. Ini kelanjutan API Lab 05; `notes` sekarang persisten.
 
