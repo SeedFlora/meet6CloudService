@@ -1,5 +1,11 @@
 # Lab 06 — Docker Compose: API + PostgreSQL + Redis
 
+## Praktikum gabungan 22 Oktober 2026
+
+Mulai dari [modul Docker Core dan Docker Compose](PRAKTIKUM_GABUNGAN_22_OKTOBER.md), [PDF modul](PRAKTIKUM_GABUNGAN_22_OKTOBER.pdf), dan [slide praktikum gabungan](slides/LAB_GABUNGAN_DOCKER_CORE_COMPOSE_22_OKTOBER.pptx). Paket ini dipakai untuk BA75 dan BB75 selama 100 menit: Core 25 menit, Compose 60 menit, serta refleksi dan cleanup 15 menit. Siapkan clone, Docker Engine, dan build pertama sebelum kelas.
+
+Satu clone repo ini menyediakan dua tahap Cloud Notes. API Core di `gabungan22/core/` memakai memori dan port host **18005**. Stack Compose dari root repo memakai PostgreSQL, Redis, dan port API **8000**. Catatan Core tidak berpindah otomatis ke database Compose. Panduan menjelaskan fungsi perintah, hasil yang diharapkan, dan gambar dari praktik sebelumnya. Adminer serta simulasi gangguan cache menjadi latihan tambahan bila waktu cukup.
+
 <!-- lecture-materials:start -->
 
 ## Materi teori sebelum praktikum
