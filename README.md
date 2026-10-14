@@ -5,8 +5,12 @@
 ## Materi teori sebelum praktikum
 
 - [Pertemuan 06: Docker Compose](slides/Teori_Pertemuan_06.pptx)
+- [Panduan teori langkah demi langkah dengan screenshot](TEORI_LANGKAH_DEMI_LANGKAH.md)
+- [PDF panduan teori](TEORI_LANGKAH_DEMI_LANGKAH.pdf)
 
 Slide menghubungkan konsep, kasus kerja, bacaan/video resmi, dan langkah lab.
+
+Urutan belajar: baca slide teori, ikuti panduan teori dari persiapan sampai pemulihan, kemudian kerjakan checkpoint pada modul praktikum. Backup tambahan memakai database uji baru sehingga catatan sumber tetap tersedia.
 
 <!-- lecture-materials:end -->
 
@@ -37,7 +41,7 @@ Bash/WSL:
 cp secrets/db_password.txt.example secrets/db_password.txt
 cp .env.example .env
 docker compose config --quiet
-docker compose up --build -d
+docker compose up --build -d --wait
 docker compose ps
 curl -fsS http://127.0.0.1:8000/health
 ```
