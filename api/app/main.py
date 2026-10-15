@@ -2,7 +2,6 @@
 
 import json
 import os
-from pathlib import Path
 
 import psycopg
 from fastapi import FastAPI, HTTPException, Response, status
@@ -35,13 +34,11 @@ class NoteInput(BaseModel):
 
 
 def db_connection():
-    password_file = Path(os.getenv("DB_PASSWORD_FILE", "/run/secrets/db_password"))
-    password = password_file.read_text(encoding="utf-8").strip()
     return psycopg.connect(
         host=os.getenv("DB_HOST", "db"),
         dbname=os.getenv("DB_NAME", "cloudnotes"),
         user=os.getenv("DB_USER", "clouduser"),
-        password=password,
+        password=os.environ["DB_PASSWORD"],
         connect_timeout=3,
         row_factory=dict_row,
     )

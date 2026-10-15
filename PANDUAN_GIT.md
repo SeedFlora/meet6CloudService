@@ -1,27 +1,15 @@
-# Panduan Git Lab 06 (repo mandiri)
+# Git untuk source proyek
 
-**Kebijakan kelas:** Lab ini latihan formatif, tanpa tugas, nilai, atau penyerahan terpisah. Satu proyek besar dikerjakan oleh kelompok **3 orang**, dengan presentasi checkpoint minggu 7 (UTS) dan hasil akhir minggu 14 (UAS). Simpan hasil lab hanya bila berguna sebagai referensi atau bukti proses proyek. Baca [brief proyek kelompok](PROYEK_KELOMPOK.md). Bobot resmi tetap mengikuti RPS/LMS.
+Praktikum Docker Core/Compose lokal cukup memakai clone materi. Tidak ada kewajiban commit, push source, atau laporan per lab. Docker Hub pada subtopik Core menyimpan image; GitHub menyimpan source.
 
-Repo materi kelas: https://github.com/SeedFlora/meet6CloudService. Di GitHub pilih **Use this template ? Create a new repository**; pilih akun Anda sebagai owner. Clone repo pribadi tersebut, lalu buka terminal pada **root repo**, tempat `README.md` dan `MODUL_MAHASISWA.md` berada. GitHub Codespaces dapat dibuka dari **Code ? Codespaces** bila lingkungan lab mendukung.
+Untuk pekerjaan satu proyek kelompok 3 orang, gunakan repository milik kelompok sesuai arahan kelas. Jalankan perintah dari root repository kelompok sendiri:
 
-Sebelum commit, jalankan:
-
-```bash
+```powershell
 git status --short
-git diff --check
-git add .
-git diff --cached --name-only
-git diff --cached --check
-git diff --cached
+git diff
+git remote -v
 ```
 
-Periksa bahwa daftar staged tidak memuat `.env`, password, token, private key, atau gambar berisi kredensial. Bila aman:
+Periksa perubahan dan remote tujuan sebelum memilih file yang akan dicommit. .env dan password lokal tetap diabaikan Git. Gunakan nama file nyata yang memang ingin disimpan, lalu commit/push ke repository sendiri. Ketentuan proyek dan penilaian mengikuti [brief proyek kelompok](PROYEK_KELOMPOK.md).
 
-```bash
-git commit -m "lab06: hasil praktik dan laporan"
-git push
-```
-
-Jika Anda membuat repo GitHub kosong tanpa template, dari root folder lab jalankan `git init`, `git branch -M main`, `git remote add origin https://github.com/USERNAME/NAMA_REPO.git`, lalu perintah add/commit di atas dan `git push -u origin main`. Jangan menambahkan remote kedua jika `git remote -v` sudah menunjukkan repo pribadi Anda. Jika tidak ada perubahan, Git akan menulis `nothing to commit`; tidak perlu membuat commit kosong.
-
-Gunakan `hasil/TEMPLATE_LAPORAN.md` untuk laporan. Bukti pribadi disimpan di `hasil/bukti/`. Gambar `screenshots/` adalah referensi materi, bukan bukti tugas Anda.
+Untuk urutan praktik lokal gunakan [modul Core dan Compose](PRAKTIKUM_GABUNGAN_22_OKTOBER.md).
